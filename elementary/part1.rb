@@ -15,6 +15,7 @@ puts "This program has multiple functions. Please select one to continue: "
 puts "  1 - Sum of numbers divisible by 3 or 5 from 1 to n."
 puts "  2 - Sum of numbers from 1 to n."
 puts "  3 - Product of numbers from 1 to n."
+puts "  4 - Times Table"
 userChoice = gets.chomp
 
 # USER SELECTION 1 - SUM OF NUMBERS DIVISIBLE BY 3 OR 5
@@ -64,5 +65,26 @@ if userChoice == "3"
 
   puts "The product of all of the numbers from 1 to #{userInput} is #{product}."
 end
+
+# USER SELECTION 4 - TIMES TABLE
+if userChoice == "4"
+  xAxis = 1
+  yAxis = 1
+  product = 1
+
+  puts "| x | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |"
+  while yAxis <= 12 do
+    print "| #{yAxis} |"
+    while xAxis <= 12 do
+      product = xAxis * yAxis
+      print "#{product}".rjust(4)
+      xAxis += 1
+    end
+    xAxis = 1
+    yAxis += 1
+    print "\n"
+  end
+end
+
 
 
