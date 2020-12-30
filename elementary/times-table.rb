@@ -15,12 +15,15 @@ puts "Created by jgriffith.me".center(64)
 
 # User prompt
 print "\n"
-puts "This program creates a customized multiplication table up to 32x32."
-puts "What size would you like to create your multiplication table?"
+puts "This program creates a multiplication table up to 32x32."
+print "\n"
+puts "Type a number between 1 and 32 to create your multiplication table: "
 userChoice = gets.chomp
-userInt = userChoice.to_i
+userInt = Integer(userChoice) # Integer method raises ArgumentError if a number isn't chosen
 
-# Setting variables and writing column headers
+# Checking range of user input, setting variables and writing column headers
+if userInt <= 32 and userInt != 0 
+
 xAxis = 1
 yAxis = 1
 product = 1
@@ -52,5 +55,10 @@ while yAxis <= userInt do
   xAxis = 1 # resets x axis number back to one prior to next row of computation
   yAxis += 1
   print "\n"
+end
+
+# if user selects a number greater than 32
+else
+  puts "Next time please select a number between 1 and 32."
 end
 
