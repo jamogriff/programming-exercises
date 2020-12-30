@@ -71,10 +71,25 @@ if userChoice == "4"
   xAxis = 1
   yAxis = 1
   product = 1
+  tableWidth = 12*4+4 # width of table times rjust(4) plus row spacing
+  print "X |".rjust(4)
 
-  puts "| x | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |"
+  loop do
+    print "#{xAxis}".rjust(4)
+    xAxis += 1
+    if xAxis == 13
+      break
+    end
+  end
+
+  print "\n"
+  tableWidth.times {print "="}
+  print "\n"
+
+  xAxis = 1 # reseting xAxis to one after writing column headers
+
   while yAxis <= 12 do
-    print "| #{yAxis} |"
+    print "#{yAxis} |".rjust(4)
     while xAxis <= 12 do
       product = xAxis * yAxis
       print "#{product}".rjust(4)
