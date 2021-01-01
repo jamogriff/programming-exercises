@@ -1,20 +1,32 @@
 
 =begin
-Getting started with arrays to implement Sieve of Eratosthenes... 
+Getting started with arrays to implement Sieve of Eratosthenes...
+
+I took this code straight from Logan Hasson's excellent gist: https://gist.github.com/loganhasson/8937903
+I intend to refine this code a bit further and make it my own...
+=end
 
 puts "Enter the upper limit to find all of the prime numbers less than it: "
 userInput = gets.chomp
-userInt = Integer(userInput)
-=end
+num = Integer(userInput)
 
-num = 100
-array = Array(1..num)
+primes = (0..num).to_a
 
-for item in array
-  if item.even?
-    
-  end
+primes[0] = primes[1] = nil
+
+counter = 0
+primes.each do |p|
+  next unless p
+
+  break if p*p > num
+  counter +=
+  (p*p).step(num,p) { |m| primes[m] = nil }
 end
+
+puts "Solved for #{num} in #{counter} steps."
+puts primes.compact
+
+
 =begin
 while num > 2 do
   if num.is_even?
