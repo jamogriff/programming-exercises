@@ -15,7 +15,7 @@ puts "  1 - Compute sum of numbers divisible by 3 or 5 from 1 to n."
 puts "  2 - Compute sum of numbers from 1 to n."
 puts "  3 - Compute product of numbers from 1 to n."
 puts "  4 - Display 12x12 Times Table."
-puts "  5 - List all prime numbers."
+puts "  5 - List prime numbers."
 userChoice = gets.chomp
 
 # USER SELECTION 1 - SUM OF NUMBERS DIVISIBLE BY 3 OR 5
@@ -100,8 +100,35 @@ elsif userChoice == "4"
 
 # USER CHOICE #5 - LIST ALL PRIME NUMBERS
 elsif userChoice == '5'
-  puts "lol developing tomorrow"
+  puts "Think of a number, and I will compute all of the prime numbers that come before it:  "
+  userInput = gets.chomp # leaving this var inact so I can refer to original number
+  userNum = Integer(userInput)
 
+  # Fun Fact: This algorithm is known as the Sieve of Eratosthenes.
+  def sieve(max)
+    primes = (0..max).to_a
+
+    primes[0] = primes[1] = nil # getting 0 and 1 out of the way
+
+    primes.each do |p|
+    # skip item if nil
+      next unless p
+
+      break if p*p > max # break loop if a perfect square exceeds max value
+
+      # as we iterate through numbers, we square the value (e.g. 3*3)
+      # then skip through the array by the value of p (i.e. by multiples of p).
+      # Each multiple of p is assigned nil, and thus removed from the array.
+      (p*p).step(max,p) {|m| primes[m] = nil}
+    end
+
+    primes.compact # compact method removes all of the nil entries
+  end
+  
+  puts "The following numbers are all of the prime numbers less than #{userInput}:"
+  puts sieve(userNum)
+  puts "Math is sweet!!!"
+ 
 # if user doesn't choose one of the number selections
 else
   puts "I am filled with an emotion that I perceive to be... perturbed."
