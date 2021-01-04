@@ -5,7 +5,7 @@ if userName == "Kelsie" or userName == "Kels"
   puts "What a beautiful name.... #{userName}."
 
 else
-  puts "Nice, to meet you #{userName}."
+  puts "Nice to meet you, #{userName}."
 end
 
 print "\n"
@@ -16,6 +16,7 @@ puts "  2 - Compute sum of numbers from 1 to n."
 puts "  3 - Compute product of numbers from 1 to n."
 puts "  4 - Display 12x12 Times Table."
 puts "  5 - List prime numbers."
+puts "  6 - List current date and next upcoming leap years"
 userChoice = gets.chomp
 
 # USER SELECTION 1 - SUM OF NUMBERS DIVISIBLE BY 3 OR 5
@@ -128,7 +129,35 @@ elsif userChoice == '5'
   puts "The following numbers are all of the prime numbers less than #{userInput}:"
   puts sieve(userNum)
   puts "Math is sweet!!!"
- 
+
+# USER SELECTION #6 - LEAP YEARS
+elsif userChoice == '6'
+=begin
+A common bug in programming is the leap year bug, in which a program cannot
+handle or anticipate the date of February 29th. This program implements a basic
+algorithm to list out the next 20 leap years.
+
+Basic Ruby Concepts: This code uses the Time class to return objects like date, year, and time.
+Some basic methods of Time include .now .day .month and .year.
+
+The .strftime method is a very useful method for formatting Time objects...
+the following is a cheatsheet for the formats we can use with strftime:
+  %d = day of the month (01..31) or use $-d for (1..31)
+  %m = month of the year (01..12) or use $-m for (1..12)
+  %k = hour (0..23)
+  %M = minutes
+  %S = seconds (00..60)
+  %l = hour (1..12)
+  %p = AM/PM
+  %Y = year
+  %A = day of the week (name)
+  %B = month (name)
+=end
+
+  time = Time.now
+  #puts "Today's date is #{time.day} of #{time.month} of the year #{time.year}"
+  puts time.strftime("It is currently %l:%M %p on %A, %B %-d, %Y")
+
 # if user doesn't choose one of the number selections
 else
   puts "I am filled with an emotion that I perceive to be... perturbed."
