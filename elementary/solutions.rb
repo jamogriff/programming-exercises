@@ -16,6 +16,7 @@ puts "  2 - Compute sum of numbers from 1 to n."
 puts "  3 - Compute product of numbers from 1 to n."
 puts "  4 - Display 12x12 Times Table."
 puts "  5 - List prime numbers."
+puts "  6 - Guess a Number Game"
 userChoice = gets.chomp
 
 # USER SELECTION 1 - SUM OF NUMBERS DIVISIBLE BY 3 OR 5
@@ -129,11 +130,36 @@ elsif userChoice == '5'
   puts sieve(userNum)
   puts "Math is sweet!!!"
  
-# if user doesn't choose one of the number selections
-else
-  puts "I am filled with an emotion that I perceive to be... perturbed."
-end
 
+# USER SELECTION 6 - GUESS A NUMBER GAME
+elsif userChoice == "6"
+
+  puts "Guess a number, and I will tell you whether the secret number is less or more than your guess."
+  puts "Hint: the secret number is less than 101"
+  userInput = gets.chomp # leaving this var inact so I can refer to original number
+  userNum = Integer(userInput)
+  secretNum = rand(100)
+  guesses = Array.new
+
+  while userNum != secretNum do
+    unless guesses.include? userNum
+      guesses << userNum
+    end
+    if userNum > secretNum
+      puts "The secret number is lower. Next guess? "
+      userNum = Integer(gets.chomp)
+    elsif userNum < secretNum
+      puts "The secret number is higher. Next guess? "
+      userNum = Integer(gets.chomp)
+    end
+  end
+
+  puts "You guessed the secret number! It took #{guesses.size} guesses."
+      
+else
+  puts "Nope. Not playing this game."
+end
+ 
 puts "Good bye."
 
 
