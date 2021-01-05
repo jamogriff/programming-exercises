@@ -184,10 +184,31 @@ the following is a cheatsheet for the formats we can use with strftime:
   time = Time.now
   #puts "Today's date is #{time.day} of #{time.month} of the year #{time.year}"
   puts time.strftime("It is currently %l:%M %p on %A, %B %-d, %Y")
+  currentYear = time.year
+  futureYear = currentYear+20
 
-  # Leaving a reminder to finish Kevin Skoglund's Git tutorial... I had some wierd issues
-  # resulting in a merge fail due to not setting how Git handles merge conflicts in .git/config
-  # ! ! ! 
+  # the algorithm is as follows:
+  # if a given year is not evenly divided by 4, it is counted as a common year.
+  # If a year is evenly divided by 100 and not evenly divided by 400 then it is also a common year.
+  # All other cases (e.g. divided by 4 or 400) results in a leap year.
+  #
+  # NOTE: If you want to know why this algorithm is more detailed than just checking
+  # whether the year is dividable by 4 check out time.rb in this directory.
+  def list_leap_years(current, future)
+    while current <= future do
+      if current % 4 != 0
+        puts "#{current} is a common year."
+      elsif current % 100 == 0 and current % 400 != 0
+        puts "#{current} is a common year."
+      else
+        puts "#{current} is a leap year!!!"
+      end
+    current += 1
+    end
+  end
+  
+  puts "If you're curious what the upcoming leap years are for the next 20 years from #{currentYear}, then here you go: "
+  list_leap_years(currentYear, futureYear)
 
 else
   puts "Nope. Not playing this game."
