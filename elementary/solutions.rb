@@ -5,7 +5,7 @@ if userName == "Kelsie" or userName == "Kels"
   puts "What a beautiful name.... #{userName}."
 
 else
-  puts "Nice to meet you, #{userName}."
+  puts "Nice to meet you, #{userName}. I am CompuTron."
 end
 
 print "\n"
@@ -211,7 +211,7 @@ the following is a cheatsheet for the formats we can use with strftime:
   list_leap_years(currentYear, futureYear)
 
 else
-  puts "Nope. Not playing this game."
+  puts "CompuTron is not pleased by your insolence."
 end
  
 puts "Good bye."
